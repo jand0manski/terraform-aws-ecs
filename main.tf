@@ -55,6 +55,7 @@ module "service" {
   create = try(each.value.create, true)
 
   # Service
+  env_name=var.env_name
   ignore_task_definition_changes     = try(each.value.ignore_task_definition_changes, false)
   alarms                             = try(each.value.alarms, {})
   capacity_provider_strategy         = try(each.value.capacity_provider_strategy, {})
