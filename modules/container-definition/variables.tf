@@ -13,6 +13,11 @@ variable "command" {
   type        = list(string)
   default     = []
 }
+variable "env_name" {
+  type        = string
+  default     = ""
+}
+
 
 variable "cpu" {
   description = "The number of cpu units to reserve for the container. This is optional for tasks using Fargate launch type and the total amount of `cpu` of all containers in a task will need to be lower than the task-level cpu value"
