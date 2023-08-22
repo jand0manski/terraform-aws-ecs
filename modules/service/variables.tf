@@ -20,6 +20,11 @@ variable "ignore_task_definition_changes" {
   default     = false
 }
 
+variable "env_name" {
+  type        = string
+  default     = ""
+}
+
 variable "alarms" {
   description = "Information about the CloudWatch alarms"
   type        = any
