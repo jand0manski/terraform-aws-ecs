@@ -528,6 +528,7 @@ module "container_definition" {
   operating_system_family = try(var.runtime_platform.operating_system_family, "LINUX")
 
   # Container Definition
+  env_name = var.env_name
   command                  = try(each.value.command, var.container_definition_defaults.command, [])
   cpu                      = try(each.value.cpu, var.container_definition_defaults.cpu, null)
   dependencies             = try(each.value.dependencies, var.container_definition_defaults.dependencies, []) # depends_on is a reserved word
