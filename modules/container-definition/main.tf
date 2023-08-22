@@ -2,7 +2,7 @@ data "aws_region" "current" {}
 
 locals {
   is_not_windows = contains(["LINUX"], var.operating_system_family)
-
+  env_name_suffix = var.env_name != "" ? "-${var.env_name}": ""
   log_configuration = merge(
     { for k, v in {
       logDriver = "awslogs",
@@ -64,7 +64,7 @@ locals {
 resource "aws_cloudwatch_log_group" "this" {
   count = var.create_cloudwatch_log_group && var.enable_cloudwatch_logging ? 1 : 0
 
-  name              = "/aws/ecs/${var.service}/${var.name}"
+  name              = "/aws/ecs/${var.service}${local.env_name_suffix}/${var.name}"
   retention_in_days = var.cloudwatch_log_group_retention_in_days
   kms_key_id        = var.cloudwatch_log_group_kms_key_id
 
