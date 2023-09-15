@@ -3,7 +3,10 @@ variable "create" {
   type        = bool
   default     = true
 }
-
+variable "create_namespace" {
+  type        = bool
+  default     = true
+}
 variable "tags" {
   description = "A map of tags to add to all resources"
   type        = map(string)
